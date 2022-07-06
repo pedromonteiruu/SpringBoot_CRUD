@@ -1,8 +1,6 @@
 package br.com.aulaapi.services;
 
-import br.com.aulaapi.entities.Telefones;
 import br.com.aulaapi.entities.User;
-import br.com.aulaapi.repositories.TelefoneRepository;
 import br.com.aulaapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +14,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    TelefoneRepository telefoneRepository;
 
 
     public List<User> searchUser(){

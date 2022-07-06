@@ -28,9 +28,6 @@ public class Telefones {
     @Column(name= "TEL")
     private String tel;
 
-    @Basic
-    @Column(name="ID")
-    private String id;
 
     @ManyToOne
     @JoinColumn(name="ID")
