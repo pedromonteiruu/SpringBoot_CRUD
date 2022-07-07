@@ -1,5 +1,6 @@
 package br.com.aulaapi.services;
 
+import br.com.aulaapi.entities.Telefones;
 import br.com.aulaapi.entities.User;
 import br.com.aulaapi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ public class UserService {
     UserRepository userRepository;
 
 
-
     public List<User> searchUser(){
         return userRepository.findAll();
     }
@@ -27,7 +27,6 @@ public class UserService {
     public Optional<User> searchUserById(String id) {return userRepository.findById(id);}
 
     public void updateUser(String id, User user){userRepository.findById(id).map(address->{
-        address.setId(user.getId());
         address.setName(user.getName());
         address.setAge(user.getAge());
         return userRepository.save(address);

@@ -1,7 +1,9 @@
 package br.com.aulaapi.controllers;
 
 import br.com.aulaapi.entities.Telefones;
+import br.com.aulaapi.entities.TelefonesToAdd;
 import br.com.aulaapi.entities.User;
+import br.com.aulaapi.services.TelService;
 import br.com.aulaapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    TelService telService;
 
     @GetMapping
     @ResponseBody
@@ -47,6 +51,11 @@ public class UserController {
         return "Usuario atualizado com sucesso!";
     }
 
+    @PostMapping(path= "/telefone/{id}")
+    public String addTelefone(@PathVariable String id, @RequestBody TelefonesToAdd telefones){
+        telService.addTel(id, telefones);
+        return "Telefone adicionado com sucesso!";
+    }
 //    @PostMapping(value={"/number"})
 //    public String addNumber(@RequestBody Telefones telefones){
 //        userService.addTelefone(telefones);
