@@ -56,10 +56,17 @@ public class UserController {
         telService.addTel(id, telefones);
         return "Telefone adicionado com sucesso!";
     }
-//    @PostMapping(value={"/number"})
-//    public String addNumber(@RequestBody Telefones telefones){
-//        userService.addTelefone(telefones);
-//        return "Novo numero cadastrado!";
-//    }
+
+    @DeleteMapping(path="telefone/{id}")
+    public String removeTelefone(@PathVariable String id){
+        telService.removeTel(id);
+        return "Telefone removido com sucesso!";
+    }
+
+    @PutMapping(path= "telefone/{id}")
+    public String updateTelefone(@PathVariable String id, @RequestBody TelefonesToAdd telefones){
+        telService.updateTel(id, telefones);
+        return "Telefone atulizado com sucesso!";
+    }
 
 }

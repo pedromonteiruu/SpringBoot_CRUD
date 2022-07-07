@@ -21,10 +21,10 @@ public class TelService {
 
     public void addTel(String id, TelefonesToAdd telefones){telRepository.save(telefones); }
 
-    public void removeUser(String id){telRepository.deleteById(id);}
+    public void removeTel(String id){telRepository.deleteById(id);}
 
-    public void updateUser(String id, TelefonesToAdd telefones){telRepository.findById(id).map(address->{
-
+    public void updateTel(String id, TelefonesToAdd telefones){telRepository.findById(id).map(address->{
+        address.setTel(telefones.getTel());
         return telRepository.save(address);
     });}
 
