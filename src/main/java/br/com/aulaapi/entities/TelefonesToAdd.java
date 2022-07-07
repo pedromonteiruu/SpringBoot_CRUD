@@ -25,6 +25,6 @@ public class TelefonesToAdd {
     private String tel;
 
     @Basic
-    @Column(name="ID")
+    @Column(name="IDUSER")
     private String ID;
 }

@@ -30,7 +30,7 @@ public class Telefones {
 
 
     @ManyToOne
-    @JoinColumn(name="ID")
+    @JoinColumn(name="IDUSER")
     @JsonBackReference
     private User user;
 
