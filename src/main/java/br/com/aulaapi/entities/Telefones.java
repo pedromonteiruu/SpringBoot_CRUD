@@ -2,12 +2,8 @@ package br.com.aulaapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
-import org.hibernate.annotations.Target;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -27,7 +23,6 @@ public class Telefones {
     @Basic
     @Column(name= "TEL")
     private String tel;
-
 
     @ManyToOne
     @JoinColumn(name="IDUSER")

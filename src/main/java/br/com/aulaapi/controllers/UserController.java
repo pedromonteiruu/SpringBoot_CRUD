@@ -1,8 +1,8 @@
 package br.com.aulaapi.controllers;
 
 import br.com.aulaapi.entities.Telefones;
-import br.com.aulaapi.entities.TelefonesToAdd;
 import br.com.aulaapi.entities.User;
+import br.com.aulaapi.repositories.UserRepository;
 import br.com.aulaapi.services.TelService;
 import br.com.aulaapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +52,16 @@ public class UserController {
     }
 
     @PostMapping(path= "/telefone/{id}")
-    public String addTelefone(@PathVariable String id, @RequestBody TelefonesToAdd telefones){
-        telService.addTel(id, telefones);
-        return "Telefone adicionado com sucesso!";
+    public Optional<Telefones> addTelefone(@PathVariable String id, @RequestBody Telefones telefones){
+        Optional<User> optional = userService.searchUserById(id);
+
+        Telefones telefoneToSave = new Telefones();
+        telefoneToSave.setTelId(telefones.getTelId());
+        telefoneToSave.setTel(telefones.getTel());
+        telefoneToSave.setUser(optional.get());
+
+        telService.addTel(id, telefoneToSave);
+        return Optional.ofNullable(telefones);
     }
 
     @DeleteMapping(path="telefone/{id}")
@@ -63,10 +70,10 @@ public class UserController {
         return "Telefone removido com sucesso!";
     }
 
-    @PutMapping(path= "telefone/{id}")
-    public String updateTelefone(@PathVariable String id, @RequestBody TelefonesToAdd telefones){
-        telService.updateTel(id, telefones);
-        return "Telefone atulizado com sucesso!";
-    }
+//    @PutMapping(path= "telefone/{id}")
+//    public String updateTelefone(@PathVariable String id, @RequestBody TelefonesToAdd telefones){
+//        telService.updateTel(id, telefones);
+//        return "Telefone atulizado com sucesso!";
+//    }
 
 }
